@@ -6,6 +6,8 @@ const cors = require("cors");
 const querystring = require("querystring");
 const cookieParser = require("cookie-parser");
 const cookie = require("cookie");
+const { header } = require("express/lib/request");
+const { workerData } = require("worker_threads");
 const app = express();
 app.use(express.json());
 
@@ -150,6 +152,6 @@ app.get("/lyrics", function (req, res) {
   });
 });
 
-app.listen(5000, () => {
-  console.log("listening at port 5000");
+app.listen(process.env.PORT, () => {
+  console.log(`listening at port ${process.env.PORT}`);
 });
